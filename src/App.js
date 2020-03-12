@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import UserInput from './UserInput/UserInput'
+import EditorJs from 'react-editor-js';
+import CheckList from '@editorjs/checklist';
+import UserOutput from './UserOutput/UserOutput';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component{
+  state = {
+    
+    title :'', 
+    input:'', 
+    taskData:[]
+  }
+
+  onChangeSubmit = (event) =>
+  {
+    this.setState({title: event.target.value});
+    this.setState({input: event.target.value});
+    console.log("This button has been clicked!")
+  }
+render() 
+{
+  return (<div>
+
+  <UserInput Title = {this.state.title} Uinput = {this.state.input}/>
+  <button onClick = {this.onChangeSubmit}>Submit task!</button>
+  <UserOutput Output = {this.state.input}/>
+  </div>);
+}
 }
 
 export default App;
