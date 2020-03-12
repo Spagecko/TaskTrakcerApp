@@ -18,14 +18,17 @@ const  userInput = ( props) =>
     };
     const style1 = {
 
-       
-         backgroundColor: 'yellow'
+        display: 'inline-table', 
+         backgroundColor: 'yellow',
+         width: '220px',
+        height: '200px'
          
 
     };
     const styleCenter = {
         textAlign: 'center'
     }
+    
     return(
     <div style = {styleCenter}>
         
@@ -38,18 +41,19 @@ const  userInput = ( props) =>
                
             </label>
             </div>
-            <div style = {style1}>
+            <div>
             
          
-                <EditorJs data = {props.Uinput} tools = {{checkList: CheckList}}/>
+                <textarea  type ="text" value = {props.Uinput} onChange = {props.Changed} style = {style1}/>
 
             
             </div>
            
-
+        
         </div>
         </form>
     </div>)
+
 };
 
 export default userInput;
