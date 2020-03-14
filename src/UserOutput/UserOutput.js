@@ -43,14 +43,15 @@ const  userOutput = (props) =>
 
         <div style ={style1}> 
         <div style = {style2}>
-            <h2> TASK ID  </h2>
+          
+            
             <div>
             <textarea value = {props.Output} style = {style3}/> 
             </div>
            
-            <button>Task Complete!</button>
-        <button> End Task</button>
-        <button>urgent</button>
+        
+        <button onClick={props.click} > End Task</button>
+        
         </div>
         
         </div>
