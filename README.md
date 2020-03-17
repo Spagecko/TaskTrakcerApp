@@ -1,4 +1,9 @@
-## my React Note taking app with Editor js 
+## This is the expanded sequel to my note taker app 
 
-## features to add 
-## make mutiple notes and be able to delete them 
+## Features to add: 
+Responsive Layout
+Rich Text edditor 
+Login page 
+Database 
+A Task Feed page 
+Admin functionality 
