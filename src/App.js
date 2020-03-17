@@ -3,8 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import UserInput from './UserInput/UserInput'
 import EditorJs from 'react-editor-js';
+import ReactQuill from 'react-quill'; 
 import shortid from 'shortid';
 import UserOutput from './UserOutput/UserOutput';
+import {parse,stringify} from 'himalaya';
 //push me zsdasd
 const style = {
 
@@ -18,20 +20,28 @@ const style = {
 
 };
 class App extends Component{
-  state = {
-    
-  
+  constructor(props)
+  {
+    super(props)
+    this.state = { 
+      input: '',
+      
     input:'', 
     entries:0, 
   
     taskdata: [],
     showUserList : false
+  
+    }
+    this.onChangeHandler = this.onChangeHandler.bind(this)
   }
+
  
 
-  onChangeHandler = (event) =>
+  onChangeHandler = (value) =>
   {
-    this.setState({input: event.target.value});
+    console.log(value);
+    this.setState({input: value});
    
   }
  
@@ -39,6 +49,13 @@ class App extends Component{
   {
     this.state.entries += 1;
     let tempList =  this.state.taskdata;
+    //html to json
+    const html = this.state.input; 
+    const json = parse(html); 
+   // alert(JSON.stringify(json));
+
+   // json to html 
+    //console.log(stringify(json));
 
     
     tempList.push({dataInfo:this.state.input})
@@ -58,6 +75,7 @@ class App extends Component{
       this.setState({showUserList: F});
       console.log("false");
     }
+    this.setState({input:''})
   }
   deleteTaskHandler = (index) => {
    
@@ -104,19 +122,32 @@ render()
     );
   }
 
+
+   //the raw state, stringified
+//const rawDraftContentState = JSON.stringify( convertToRaw(this.state.input.getCurrentContent()) );
+//console.log(rawDraftContentState);
+// convert the raw state back to a useable ContentState object
+//console.log("CONTENT STATE");
+//const contentState = convertFromRaw( JSON.parse( rawDraftContentState) );
+//console.log(stateToHTML(contentState));
+//console.log(contentState);
+
   return (
-  
+ 
   <div className = "App">
-    <div >
-  <UserInput Title = {this.state.title} Uinput = {this.state.input} 
-    Changed ={this.onChangeHandler} />
-      <button style = {style}onClick = {this.onChangeSubmit}>Submit task!</button>
+    <div className = "Flew-row">
+    <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css"></link>
+    <ReactQuill   value={this.state.input} 
+    onChange = {this.onChangeHandler} 
+    bounds={'.app'}/>
+    
    </div>
+   <button style = {style}onClick = {this.onChangeSubmit}>Submit task!</button>
    <div className = "Flex-row">
     {RenderContentLst}
 
    </div>
-
+    
 
   </div>
 

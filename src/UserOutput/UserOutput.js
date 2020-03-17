@@ -45,9 +45,10 @@ const  userOutput = (props) =>
         <div style = {style2}>
           
             
-            <div>
-            <textarea value = {props.Output} style = {style3}/> 
-            </div>
+            
+            
+            <div dangerouslySetInnerHTML={{__html: props.Output}}></div>
+            
            
         
         <button onClick={props.click} > End Task</button>

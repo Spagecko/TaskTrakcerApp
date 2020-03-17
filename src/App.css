@@ -1,5 +1,7 @@
 .App {
+
   text-align: center;
+  background-color:#a5b7bd
 }
 
 .App-logo {
@@ -13,6 +15,7 @@
   align-items : center; 
 
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

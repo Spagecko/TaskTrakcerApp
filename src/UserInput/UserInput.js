@@ -1,27 +1,28 @@
 import React from 'react';
 import EditorJs from 'react-editor-js';
 import CheckList from '@editorjs/checklist';
-
+import ReactQuill from 'react-quill'; 
 const  userInput = ( props) =>
 {
     const style = {
 
-        display: 'inline-table', 
+        display: 'flex', 
         padding: '16px', 
         textAlign: 'left',
          margin: '10px',    
          border: '1px solid black',
-         backgroundColor: 'grey',
+         backgroundColor: '#f0ead6',
     
          
 
     };
     const style1 = {
 
-        display: 'inline-table', 
-         backgroundColor: 'yellow',
-         width: '220px',
-        height: '200px'
+        display: 'block', 
+         //backgroundColor: 'yellow',
+        // width: '350px',
+       // height: '200px'
+       minheight: "18em"
         
          
 
@@ -29,29 +30,27 @@ const  userInput = ( props) =>
     const styleCenter = {
         textAlign: 'center'
     }
-    
+    /* <textarea  type ="text" value = {props.Uinput} onChange = {props.Changed} style = {style1}/> */
     return(
-    <div style = {styleCenter}>
-        
+    <div style = {style} >
+        <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css"></link>
         <form>
-        <div style = {style}>
-           <div>
-            <h2>ToDo List Generator</h2>
-            <label>
-          
-               
-            </label>
+        <div >
+        <h2>ToDo List Generator</h2>
+           <div style = {style1}>
+        
+                  
+           <ReactQuill value={props.Uinput} onChange = {props.onChange} />
             </div>
-            <div>
+           
             
-         
-                <textarea  type ="text" value = {props.Uinput} onChange = {props.Changed} style = {style1}/>
+      
 
-            
-            </div>
+         
            
         
         </div>
+      
         </form>
     </div>)
 
